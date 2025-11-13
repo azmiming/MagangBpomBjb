@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddStatusKehadiranToPresentsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('presents', function (Blueprint $table) {
+            // tambahkan kolom baru
+            $table->string('status_kehadiran')->nullable()->after('tipe');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('presents', function (Blueprint $table) {
+            $table->dropColumn('status_kehadiran');
+        });
+    }
+}
